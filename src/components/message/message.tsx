@@ -1,19 +1,38 @@
 import React from "react";
 
-import css from "./surname.module.css";
+import css from "./message.module.css";
 
 type RootType = {
-    name: string,
-    surname: string,
-    nationality: string
+    user: string,
+    text: string,
+    time: {
+        hour: number,
+        minutes: number,
+        period: string
+    }
 }
 
-const Surname: React.FC<RootType> = ({name, surname, nationality}) => {
+const Message: React.FC<RootType> = ({user, text, time}) => {
     return (
-        <div>
-            <p className={css.text}>Hello, my name is <span className={css.name}>{name} {surname}</span></p>
+        <div className={css.msg_block}>
+            <div className={css.user}>{user}</div>
+            <div className={css.text}>{text}</div>
+            <div className={css.time}>{renderTime(time)}</div>
         </div>
     )
 }
 
-export default Surname;
+type TimeType = {
+    hour: number,
+    minutes: number,
+    period: string
+}
+
+function renderTime(obj: TimeType) {
+    const {hour, minutes, period} = obj;
+    return (
+        `${hour}:${minutes} ${period}`
+    )
+}
+
+export default Message;

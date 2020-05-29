@@ -1,3 +1,3 @@
-import Surname from "./surname";
+import Message from "./message";
 
-export default Surname;
+export default Message;

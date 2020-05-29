@@ -1,9 +1,24 @@
-.text {
-    font-size: 34px;
-    font-family: Georgia, serif;
+.msg_block {
+    width: 500px;
+    height: auto;
+    background-color: #3d4255;
+    border-radius: 13px;
+    box-sizing: border-box;
+    padding: 7px;
 }
 
-.name {
-    color: #7430b3;
-    font: italic 700 36px/40px Georgia, serif;
+.user {
+    color: chartreuse;
+    font-size: .8rem;
+    text-align: left;
+}
+
+.text {
+    line-height: 1.1rem;
+    color: whitesmoke;
+}
+
+.time {
+    color: #a09b9b;
+    text-align: right;
 }

@@ -1,0 +1,9 @@
+.text {
+    font-size: 34px;
+    font-family: Georgia, serif;
+}
+
+.name {
+    color: #7430b3;
+    font: italic 700 36px/40px Georgia, serif;
+}
