@@ -1,0 +1,24 @@
+.msg_block {
+    width: 500px;
+    height: auto;
+    background-color: #3d4255;
+    border-radius: 13px;
+    box-sizing: border-box;
+    padding: 7px;
+}
+
+.user {
+    color: chartreuse;
+    font-size: .8rem;
+    text-align: left;
+}
+
+.text {
+    line-height: 1.1rem;
+    color: whitesmoke;
+}
+
+.time {
+    color: #a09b9b;
+    text-align: right;
+}
