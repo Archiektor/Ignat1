@@ -1,24 +1,41 @@
-.msg_block {
-    width: 500px;
-    height: auto;
-    background-color: #3d4255;
-    border-radius: 13px;
-    box-sizing: border-box;
-    padding: 7px;
+.todolist {
+    background-color: #b4acba;
+    margin-top: 20px;
+    box-shadow: 4px 4px 7px black;
 }
 
-.user {
-    color: chartreuse;
-    font-size: .8rem;
-    text-align: left;
+.list {
+    padding: 8px;
+    margin: 3px;
+    text-align: center;
 }
 
-.text {
-    line-height: 1.1rem;
+.item {
+    list-style: none;
+    font-size: 1.2rem;
+    font-family: "Palatino Linotype";
+    border-bottom: #3d4255 2px solid;
+}
+
+.btnBlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.btn {
+    font-size: 1.3rem;
+    padding: 5px;
+    background-color: #723753;
     color: whitesmoke;
 }
 
-.time {
-    color: #a09b9b;
-    text-align: right;
+.deleteBtn {
+    font-weight: 300;
+    font-family: Arial, sans-serif;
+    margin-left: 2%;
+}
+
+.deleteBtn::before {
+    content: 'x';
+    color: #111010;
 }

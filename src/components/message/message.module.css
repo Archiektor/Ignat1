@@ -1,3 +1,20 @@
+.msgWrapper {
+    position: relative;
+    margin-left: 10vw;
+    margin-bottom: 25px;
+}
+
+.avatar {
+    position: absolute;
+    left: -9vw;
+    bottom: 0px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: url("../../img/linuxava.png") center center no-repeat;
+    background-size: cover;
+}
+
 .msg_block {
     width: 500px;
     height: auto;
@@ -9,7 +26,7 @@
 
 .user {
     color: chartreuse;
-    font-size: .8rem;
+    font-size: .9rem;
     text-align: left;
 }
 

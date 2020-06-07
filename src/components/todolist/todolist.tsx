@@ -1,38 +1,40 @@
 import React from "react";
 
-import css from "./message.module.css";
+import css from "./todolist.module.css";
+import {TaskType} from "../app/app";
 
 type RootType = {
-    user: string,
-    text: string,
-    time: {
-        hour: number,
-        minutes: number,
-        period: string
-    }
+    data: Array<TaskType>;
+    deleteTask: (id: string) => void,
+    setPriority: (p: string) => void,
 }
 
-const Message: React.FC<RootType> = ({user, text, time}) => {
+let renderedTasks = (arr: Array<TaskType>, deleteTask: (id: string) => void) => {
+    return arr.map((t) => {
+        // !!! WTF const {id as key, task, prior} = t;
+        const {id, task, prior} = t;
+        return (
+            <li className={css.item} key={id}>
+                <span>{`${task.charAt(0).toUpperCase()}${task.slice(1)}`}</span>
+                <span>{`  : ${prior}`}</span>
+                <button className={css.deleteBtn} onClick={() => deleteTask(task)}></button>
+            </li>
+        )
+    })
+}
+
+const Todolist: React.FC<RootType> = ({data, deleteTask, setPriority}) => {
     return (
-        <div className={css.msg_block}>
-            <div className={css.user}>{user}</div>
-            <div className={css.text}>{text}</div>
-            <div className={css.time}>{renderTime(time)}</div>
+        <div className={css.todolist}>
+            <ul className={css.list}>
+                {renderedTasks(data, deleteTask)}
+            </ul>
+            <div className={css.btnBlock}>
+                <button className={css.btn} onClick={() => setPriority("high")}>Sort by HighP</button>
+                <button className={css.btn} onClick={() => setPriority("low")}>Sort by LowP</button>
+            </div>
         </div>
     )
 }
 
-type TimeType = {
-    hour: number,
-    minutes: number,
-    period: string
-}
-
-function renderTime(obj: TimeType) {
-    const {hour, minutes, period} = obj;
-    return (
-        `${hour}:${minutes} ${period}`
-    )
-}
-
-export default Message;
+export default Todolist;

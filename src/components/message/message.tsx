@@ -14,11 +14,15 @@ type RootType = {
 
 const Message: React.FC<RootType> = ({user, text, time}) => {
     return (
-        <div className={css.msg_block}>
-            <div className={css.user}>{user}</div>
-            <div className={css.text}>{text}</div>
-            <div className={css.time}>{renderTime(time)}</div>
+        <div className={css.msgWrapper}>
+            <div className={css.avatar}></div>
+            <div className={css.msg_block}>
+                <div className={css.user}>{user}</div>
+                <div className={css.text}>{text}</div>
+                <div className={css.time}>{renderTime(time)}</div>
+            </div>
         </div>
+
     )
 }
 
