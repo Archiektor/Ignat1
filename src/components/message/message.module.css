@@ -1,12 +1,12 @@
 .msgWrapper {
     position: relative;
-    margin-left: 10vw;
+    margin-left: 70px;
     margin-bottom: 25px;
 }
 
 .avatar {
     position: absolute;
-    left: -9vw;
+    left: -70px;
     bottom: 0px;
     width: 60px;
     height: 60px;
