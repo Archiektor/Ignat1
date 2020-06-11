@@ -1,26 +1,25 @@
 import React, {useState} from "react";
 
-import Surname from "../surname";
-import Message from "../message";
 import Todolist from "../todolist";
-import {guid} from "./idGenerator";
+import {v1} from "uuid";
+import Experimental from "../experimental";
 
 export type TaskType = {
-    id: string,
+    key: string,
     task: string,
     prior: string
 }
 
 const arrOfTasks: Array<TaskType> = [
-    {id: '', task: `work`, prior: `high`},
-    {id: '', task: `war3TFT`, prior: `low`},
-    {id: '', task: `english`, prior: `mid`},
-    {id: '', task: `redux`, prior: `high`},
-    {id: '', task: `civ6`, prior: `low`},
-    {id: '', task: `narcos`, prior: `mid`}
+    {key: '', task: `work`, prior: `high`},
+    {key: '', task: `war3TFT`, prior: `low`},
+    {key: '', task: `english`, prior: `mid`},
+    {key: '', task: `redux`, prior: `high`},
+    {key: '', task: `civ6`, prior: `low`},
+    {key: '', task: `narcos`, prior: `mid`}
 ];
 
-arrOfTasks.every(task => task.id = guid());
+arrOfTasks.every((t) => t.key = v1());
 
 const App = () => {
     const [tasks, setTasks] = useState(arrOfTasks);
@@ -45,7 +44,7 @@ const App = () => {
 
     return (
         <React.Fragment>
-            <div>
+{/*            <div>
                 <Surname name={"Nikki"} surname={"Odd"} nationality={"PL"}/>
             </div>
             <div>
@@ -55,8 +54,9 @@ const App = () => {
                 <Message user="Nikki Odd"
                          text={`Lorem ipsum dolor sit amet.`}
                          time={{hour: 9, minutes: 25, period: "PM"}}/>
-                <Todolist data={tasks} deleteTask={deleteTask} setPriority={setPriority}/>
-            </div>
+            </div>*/}
+            <Todolist data={tasks} deleteTask={deleteTask} setPriority={setPriority}/>
+            <Experimental />
         </React.Fragment>
     )
 }

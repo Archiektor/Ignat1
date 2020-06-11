@@ -11,10 +11,9 @@ type RootType = {
 
 let renderedTasks = (arr: Array<TaskType>, deleteTask: (id: string) => void) => {
     return arr.map((t) => {
-        // !!! WTF const {id as key, task, prior} = t;
-        const {id, task, prior} = t;
+        const {key, task, prior} = t;
         return (
-            <li className={css.item} key={id}>
+            <li className={css.item} key={key}>
                 <span>{`${task.charAt(0).toUpperCase()}${task.slice(1)}`}</span>
                 <span>{`  : ${prior}`}</span>
                 <button className={css.deleteBtn} onClick={() => deleteTask(task)}></button>

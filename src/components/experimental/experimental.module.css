@@ -1,0 +1,25 @@
+.wrapper {
+    background-color: #2d1f38;
+    color: whitesmoke;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.field {
+    height: 25px;
+    box-shadow: 4px 4px 7px black;
+}
+
+.btn {
+    background-color: #451d5a;
+    margin-left: 10px;
+    color: #d08e46;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    box-shadow: 4px 4px 7px black;
+
+}
+
+.decor {
+    margin-left: 15px;
+}
