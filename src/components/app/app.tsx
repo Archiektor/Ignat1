@@ -44,19 +44,8 @@ const App = () => {
 
     return (
         <React.Fragment>
-{/*            <div>
-                <Surname name={"Nikki"} surname={"Odd"} nationality={"PL"}/>
-            </div>
-            <div>
-                <Message user="Nikki Odd"
-                         text={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque cupiditate enim, excepturi fugit impedit laborum optio quasi. Architecto asperiores debitis quisquam! Ducimus exercitationem illo laborum mollitia nesciunt non praesentium voluptatem. Asperiores beatae consectetur cum cumque debitis delectus dignissimos doloribus eaque eveniet explicabo fugiat fugit hic illo laborum nam officia optio pariatur, placeat quas quos soluta ut veritatis! Asperiores at consequuntur culpa deserunt dolore enim, est, et explicabo facere iure non numquam quis repudiandae rerum similique sint ut? Aliquid beatae debitis dolores eligendi ipsum laborum libero maxime molestiae nobis pariatur, quasi, ut vero voluptatibus? Adipisci facere hic tenetur vitae. Animi, doloribus?`}
-                         time={{hour: 9, minutes: 25, period: "PM"}}/>
-                <Message user="Nikki Odd"
-                         text={`Lorem ipsum dolor sit amet.`}
-                         time={{hour: 9, minutes: 25, period: "PM"}}/>
-            </div>*/}
             <Todolist data={tasks} deleteTask={deleteTask} setPriority={setPriority}/>
-            <Experimental />
+            <Experimental/>
         </React.Fragment>
     )
 }

@@ -8,10 +8,9 @@ type PersonType = {
     name: string
 }
 
-let names: Array<PersonType> = [];
-
 const Experimental = () => {
     const [name, setName] = useState("");
+    const [names, setNames] = useState<Array<PersonType>>([])
 
     const showMsg = () => {
         if (name.length > 0) {
@@ -21,7 +20,7 @@ const Experimental = () => {
                 id: v1(),
                 name
             };
-            names.push(newPerson);
+            setNames([...names, newPerson])
         }
     }
 
