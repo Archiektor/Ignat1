@@ -1,7 +1,7 @@
 import React from "react";
 
 import css from "./todolist.module.css";
-import {TaskType} from "../app/app";
+import {TaskType} from "../prejunior/prejunior";
 
 type RootType = {
     data: Array<TaskType>;

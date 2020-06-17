@@ -1,0 +1,39 @@
+.wrapper {
+    width: 10vw;
+    height: 90vh;
+    text-align: center;
+    background-color: #aa9112;
+    position: relative;
+    left: -8vw;
+}
+
+.wrapper:hover {
+    left: 0;
+}
+
+.arrow {
+    background: url("https://image.flaticon.com/icons/svg/271/271228.svg") center no-repeat;
+    color: rgba(255,255,255,0);
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 10fr 2fr;
+    color: white;
+    padding: 3px 5px;
+    box-sizing: border-box;
+    text-decoration: none;
+    border-bottom: 2px solid #8b7710;
+    font-size: 1.2rem;
+}
+
+.link {
+    text-decoration: none;
+    margin: 10px;
+    padding: 5px;
+    color: white;
+}
+
+.activeLink {
+    color: goldenrod;
+}
