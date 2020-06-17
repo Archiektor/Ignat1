@@ -1,0 +1,35 @@
+.btn {
+    width: 150px;
+    height: 50px;
+    background-color: #451d5a;
+    margin-left: 10px;
+    color: #d08e46;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, .55);
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+}
+
+.btn:hover {
+    opacity: 0.75;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .95);
+}
+
+.errorBtn {
+    background-color: rgba(149, 66, 66, 0.73);
+    margin-left: 10px;
+    color: #d08e46;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, .55);
+    text-align: center;
+    border-radius: 10px;
+    font-family: "Montserrat", sans-serif;
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+

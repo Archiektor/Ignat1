@@ -1,0 +1,38 @@
+.wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    /*background-color: #c4dbe3;*/
+    width: 250px;
+    justify-items: center;
+    align-items: center;
+}
+
+.label {
+    color: whitesmoke;
+    font-size: 1.1rem;
+}
+
+.input {
+    width: 240px;
+    height: 25px;
+    border-radius: 5px;
+    min-height: 22px;
+    border: 1px solid gray;
+    box-shadow: 2px 2px 4px black;
+}
+
+.inputErrror {
+    width: 240px;
+    border-radius: 5px;
+    min-height: 22px;
+    border: 1px solid gray;
+    box-shadow: 2px 2px 4px black;
+    border: darkred solid 4px;
+    background-color: #8e4747;
+}
+
+.error {
+    margin-top: 3px;
+    font-size: 1.1rem;
+    color: #aa1c1c;
+}

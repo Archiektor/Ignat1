@@ -1,8 +1,9 @@
-import React, {useState} from "react";
-
-import Todolist from "../todolist";
+import React, {KeyboardEvent, MouseEvent, useState} from "react";
 import {v1} from "uuid";
 import Experimental from "../experimental";
+import Message from "../message";
+import Surname from "../surname";
+import Todolist from "../todolist";
 
 export type TaskType = {
     key: string,
@@ -21,8 +22,48 @@ const arrOfTasks: Array<TaskType> = [
 
 arrOfTasks.every((t) => t.key = v1());
 
+
 const App = () => {
     const [tasks, setTasks] = useState(arrOfTasks);
+    const [error, setError] = useState<string | undefined>("");
+    const [text, setText] = useState<string>("");
+    const [result, setResult] = useState<string>("");
+
+    const setDefault = (str: string) => {
+        setError(str);
+        str.length && setTimeout(() => setError(""), 2200);
+        setText("");
+    }
+
+    const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            alert("Hitted");
+            if (e.currentTarget.value.trim().length === 0) {
+                setDefault("Invalid text");
+            } else {
+                setResult(text);
+                setDefault("");
+            }
+        }
+    }
+
+    const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+        alert("Hitted");
+        if (text.trim().length === 0) {
+            setDefault("Invalid text");
+        } else {
+            setResult(text);
+            setDefault("");
+        }
+    }
+
+    const data = {
+        onEnter,
+        onClickHandler,
+        setText,
+        error,
+        text,
+    }
 
     const deleteTask = (id: string) => {
         let arrAfterDel = tasks.filter((item) => item.task !== id);
@@ -44,8 +85,11 @@ const App = () => {
 
     return (
         <React.Fragment>
-            <Todolist data={tasks} deleteTask={deleteTask} setPriority={setPriority}/>
-            <Experimental/>
+            <Message user={"Nikki"} text={"Hello, amigos !"} time={{hour: 11, minutes: 30, period: "AM"}}/>
+            <Surname name={"Niki"} surname={"Odd"} nationality={"PLN"}/>
+            <Todolist data={arrOfTasks} deleteTask={deleteTask} setPriority={setPriority}/>
+            <Experimental data={data}/>
+
         </React.Fragment>
     )
 }

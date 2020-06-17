@@ -1,39 +1,24 @@
-import React, {useState} from "react";
+import React, {KeyboardEvent, MouseEvent} from "react";
 
 import css from "./experimental.module.css";
-import {v1} from "uuid";
+import UserButton from "../userButton";
+import UserInput from "../userInput";
 
-type PersonType = {
-    id: string,
-    name: string
+type ExperimentalType = {
+    data: {
+        error: string | undefined,
+        text: string,
+        onEnter: (e: KeyboardEvent<HTMLInputElement>) => void,
+        setText: (text: string) => void,
+        onClickHandler: (e: MouseEvent<HTMLButtonElement>) => void,
+    }
 }
 
-const Experimental = () => {
-    const [name, setName] = useState("");
-    const [names, setNames] = useState<Array<PersonType>>([])
-
-    const showMsg = () => {
-        if (name.length > 0) {
-            alert(`Hola, amigos ${name}`);
-            setName("");
-            let newPerson = {
-                id: v1(),
-                name
-            };
-            setNames([...names, newPerson])
-        }
-    }
-
+const Experimental: React.FC<ExperimentalType> = ({data}) => {
     return (
         <div className={css.wrapper}>
-            <input className={css.field} value={name}
-                   onChange={(e) => setName(e.currentTarget.value.trim())}
-                   onKeyPress={(e) => e.key === "Enter" && showMsg()}
-            />
-            <button className={css.btn}
-                    onClick={() => showMsg()}>{`Gently`}
-            </button>
-            <span className={css.decor}>{names.length}</span>
+            <UserInput onEnter={data.onEnter} error={data.error} value={data.text} setText={data.setText}/>
+            <UserButton onClickHandler={data.onClickHandler} btnName={`Gently`} error={data.error}/>
         </div>
     )
 }
