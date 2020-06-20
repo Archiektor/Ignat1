@@ -23,7 +23,7 @@ const arrOfTasks: Array<TaskType> = [
 
 arrOfTasks.every((t) => t.key = v1());
 
-const Prejunior = () => {
+const Prejunior = (props: any) => {
     const [tasks, setTasks] = useState(arrOfTasks);
     const [error, setError] = useState<string | undefined>("");
     const [text, setText] = useState<string>("");
@@ -36,14 +36,11 @@ const Prejunior = () => {
     }
 
     const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            alert("Hitted");
-            if (e.currentTarget.value.trim().length === 0) {
-                setDefault("Invalid text");
-            } else {
-                setResult(text);
-                setDefault("");
-            }
+        if (e.currentTarget.value.trim().length === 0) {
+            setDefault("Invalid text");
+        } else {
+            setResult(text);
+            setDefault("");
         }
     }
 
@@ -82,7 +79,6 @@ const Prejunior = () => {
     const filterByPrior = (typeOfPrior: string) => {
         return tasks.filter((item) => item.prior === typeOfPrior);
     }
-
 
     return (
         <div>

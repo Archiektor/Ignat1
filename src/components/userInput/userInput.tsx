@@ -10,11 +10,19 @@ const UserInput: React.FC<InputPropsType> = ({onEnter, error, setText, ...props}
     const onChangehandler = (e: ChangeEvent<HTMLInputElement>) => {
         setText && setText(e.currentTarget.value);
     }
+    const onEnterCallback = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            alert("Hitted");
+            if (onEnter) {
+                onEnter(e);
+            }
+        }
+    }
     let inputStyle = error ? css.inputErrror : css.input;
     return (
         <div className={css.wrapper}>
             <label className={css.label}>{`Your message: `}</label>
-            <input value={props.value} onChange={onChangehandler} onKeyPress={onEnter} className={inputStyle}
+            <input value={props.value} onChange={onChangehandler} onKeyPress={onEnterCallback} className={inputStyle}
                    placeholder={"text"}
                    autoComplete={"off"} {...props} type="text"/>
             <span className={css.error}>{error}</span>

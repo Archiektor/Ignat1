@@ -18,7 +18,7 @@ const Experimental: React.FC<ExperimentalType> = ({data}) => {
     return (
         <div className={css.wrapper}>
             <UserInput onEnter={data.onEnter} error={data.error} value={data.text} setText={data.setText}/>
-            <UserButton onClickHandler={data.onClickHandler} btnName={`Gently`} error={data.error}/>
+            <UserButton onClickHandler={data.onClickHandler} error={data.error}>Gently</UserButton>
         </div>
     )
 }
