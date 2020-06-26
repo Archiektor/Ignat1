@@ -1,10 +1,11 @@
-import React, {KeyboardEvent, MouseEvent, useState} from "react";
+import React, {KeyboardEvent, useState} from "react";
 
 import {v1} from "uuid";
 import Experimental from "../experimental";
 import Message from "../message";
 import Surname from "../surname";
 import Todolist from "../todolist";
+import CustomPaint from "../common/customPaint/customPaint";
 
 export type TaskType = {
     key: string,
@@ -23,7 +24,7 @@ const arrOfTasks: Array<TaskType> = [
 
 arrOfTasks.every((t) => t.key = v1());
 
-const Prejunior = (props: any) => {
+const Prejunior = () => {
     const [tasks, setTasks] = useState(arrOfTasks);
     const [error, setError] = useState<string | undefined>("");
     const [text, setText] = useState<string>("");
@@ -40,11 +41,12 @@ const Prejunior = (props: any) => {
             setDefault("Invalid text");
         } else {
             setResult(text);
+            console.log(result);
             setDefault("");
         }
     }
 
-    const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+    const onClickHandler = () => {
         alert("Hitted");
         if (text.trim().length === 0) {
             setDefault("Invalid text");
@@ -86,6 +88,7 @@ const Prejunior = (props: any) => {
             <Surname name={"Niki"} surname={"Odd"} nationality={"PLN"}/>
             <Todolist data={arrOfTasks} deleteTask={deleteTask} setPriority={setPriority}/>
             <Experimental data={data}/>
+            <CustomPaint/>
         </div>
     )
 }

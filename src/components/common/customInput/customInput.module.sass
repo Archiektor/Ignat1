@@ -1,0 +1,23 @@
+@import "src/sass/variables"
+
+.wrapper
+  @include flex-column
+  @include flex-center
+  width: 240px
+
+.input
+  width: 100%
+  height: 40px
+  border-radius: 5px
+  margin: 5px
+  align-self: center
+  box-sizing: border-box
+  box-shadow: 2px 2px 7px black
+  
+  &_error
+    outline: $darkredcolor 2px solid
+    background-color: #c9a9a9
+
+.span
+  color: $darkredcolor
+  font: 700 0.9rem/1.2 "Calibri"

@@ -9,7 +9,7 @@ const App = () => {
     return (
         <div className={css.wrapper}>
             <Navbar/>
-            <Route path='/preJunior' render={() => <Prejunior></Prejunior>}/>
+            <Route path='/preJunior' render={() => <Prejunior/>}/>
             <Route path='/Junior' render={() => <div>5-8</div>}/>
             <Route path='/Junior+' render={() => <div>9-12</div>}/>
 

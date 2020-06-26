@@ -1,0 +1,32 @@
+@import "src/sass/variables"
+
+.btn
+  width: 160px
+  height: 40px
+  padding: 5px
+  border-radius: 6px
+  background-color: #f5deb3
+  box-shadow: 2px 2px 7px #403828
+  font-size: 1.4rem
+  font-family: Century sans-serif
+  font-weight: 500
+  align-self: center
+  justify-self: center
+  margin: 5px
+  cursor: pointer
+  box-sizing: border-box
+
+  &_red
+    background-color: $darkredcolor
+    font-weight: 700
+    color: #99a8b6
+    cursor: no-drop
+
+  &:disabled
+    opacity: 0.5
+    cursor: no-drop
+
+  &:hover
+    background-color: #f5d69e
+    font-weight: 700
+    border: 2px solid #f1ce8f
