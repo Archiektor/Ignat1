@@ -25,6 +25,7 @@ const CustomInput: React.FC<CustomInputType> = ({getInputValue, title, onEnter, 
         }
     }
 
+
     return (
         <div className={sass.wrapper}>
             <input value={title} onKeyPress={(e) => onKeyPressHandler(e)} onChange={(e) => onChangeHandler(e)}
