@@ -28,7 +28,7 @@ const Junior = () => {
     }
 
     const userSaveState = () => {
-        saveState("user", state);
+        saveState<string>("user", state);
         setState("");
     }
 
@@ -41,9 +41,8 @@ const Junior = () => {
             <h2>Editable Span Usage</h2>
             <CustomSpan title={state} getInputValue={getInputValue}
                         randomFunctionDoingSmthWhenEnterPressed={randomFunctionDoingSmthWhenEnterPressed}>image?</CustomSpan>
-            {/*4. should we rewrite saveState with user key?*/}
             <CustomButton onClickFn={() => userSaveState()}>save</CustomButton>
-            <CustomButton onClickFn={() => restoreState("user")}>restore</CustomButton>
+            <CustomButton onClickFn={() => {restoreState<string>("user", "")}}>restore</CustomButton>
         </div>
     )
 }

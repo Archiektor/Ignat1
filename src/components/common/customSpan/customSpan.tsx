@@ -6,16 +6,15 @@ import CustomInput from "../customInput/customInput";
 import {StateType} from "../../junior/junior";
 
 // 2 what  mean T ? random Type ?
-export function saveState<T>(key: string, state: string) {
+export function saveState<T>(key: string, state: T) {
     const stateAsString = JSON.stringify(state);
     localStorage.setItem(key, stateAsString);
 }
 
-// 3 Refactor with random values ? bad or good ?
-export function restoreState<T>(key: string, defaultState = {x: "", y: 0}) {
+export function restoreState<T>(key: string, defaultState: T) {
     const stateAsString = localStorage.getItem(key);
     if (stateAsString !== null) {
-        defaultState = JSON.parse(stateAsString) as StateType;
+        defaultState = JSON.parse(stateAsString) as T;
     }
     alert(defaultState);
     return defaultState;
@@ -41,8 +40,7 @@ const CustomSpan: React.FC<CustomSpanType> = ({title, getInputValue, randomFunct
     return (
         <div className={sass.wrapper}>
             <span onClick={() => onClickHandler()} className={spanEditableStyle}>{props.children}</span>
-            {clicked &&
-            <CustomInput title={title!} getInputValue={getInputValue} onEnter={randomFunctionDoingSmthWhenEnterPressed}/>}
+            {clicked && <CustomInput title={title!} getInputValue={getInputValue} onEnter={randomFunctionDoingSmthWhenEnterPressed}/>}
         </div>
     )
 }
