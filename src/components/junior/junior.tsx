@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import CustomSpan from "../common/customSpan/customSpan";
-import {saveState, restoreState} from "../common/customSpan/customSpan";
+import {saveState, restoreState} from "../../assets/localStorage/localStorage"
 import sass from './junior.module.sass';
 import CustomButton from "../common/customButton/customButton";
 
