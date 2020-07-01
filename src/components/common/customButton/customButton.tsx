@@ -6,15 +6,19 @@ import {ButtonType} from "../customPaint/customPaint";
 type CustomButtonType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
     buttonType?: ButtonType,
     onClickFn?: () => void,
+    onLocalStorageSave? : (key: string, str: string) => void,
+    onLocalStorageRestore?: (key: string) => void,
+    keytostorage?: string,
+    data?: string
 }
 
-const CustomButton:React.FC<CustomButtonType> = ({buttonType, onClickFn, ...props}) => {
-    console.log(onClickFn);
-    // 5. Potentially bad practise ?
+const CustomButton: React.FC<CustomButtonType> = ({buttonType, onClickFn,onLocalStorageSave,onLocalStorageRestore, ...props}) => {
     let btnStyle = buttonType === undefined ? `${sass.btn}` : `${sass.btn} ${sass.btn_red}`;
 
     const onClickHandler = () => {
         onClickFn && onClickFn();
+        onLocalStorageSave && onLocalStorageSave(props.keytostorage!, props.data!)
+        onLocalStorageRestore && onLocalStorageRestore(props.keytostorage!)
     }
 
     return (

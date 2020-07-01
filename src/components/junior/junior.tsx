@@ -4,45 +4,33 @@ import {saveState, restoreState} from "../common/customSpan/customSpan";
 import sass from './junior.module.sass';
 import CustomButton from "../common/customButton/customButton";
 
-export type StateType = {
-    x: string
-    y: number
-}
-
-
-/*saveState<StateType>("test", {x: "A", y: 1});
-
-const state: StateType = restoreState<StateType>("test", {x: "", y: 0});
-console.log(state);*/
-
 const Junior = () => {
-    const [state, setState] = useState<string>("");
+    const [value, setValue] = useState<string>("why so serious?");
 
     const getInputValue = (str: string) => {
-        // console.log(state);
-        setState(str);
+        setValue(str);
+        // console.log(value)
     }
 
     const randomFunctionDoingSmthWhenEnterPressed = () => {
         console.log("Enter hitted");
     }
 
-    const userSaveState = () => {
-        saveState<string>("user", state);
-        setState("");
+    const userSaveState = (key: string, str: string) => {
+        saveState(key, str);
     }
 
-    /*    const setInputValue = () => {
-            setState("");
-        }*/
+    const userRestoreState = (key: string) => {
+        restoreState(key, "default")
+    }
 
     return (
         <div className={sass.wrapper}>
             <h2>Editable Span Usage</h2>
-            <CustomSpan title={state} getInputValue={getInputValue}
-                        randomFunctionDoingSmthWhenEnterPressed={randomFunctionDoingSmthWhenEnterPressed}>image?</CustomSpan>
-            <CustomButton onClickFn={() => userSaveState()}>save</CustomButton>
-            <CustomButton onClickFn={() => {restoreState<string>("user", "")}}>restore</CustomButton>
+            <CustomSpan title={value} getInputValue={getInputValue}
+                        randomFunctionDoingSmthWhenEnterPressed={randomFunctionDoingSmthWhenEnterPressed}>{value}</CustomSpan>
+            <CustomButton onLocalStorageSave={userSaveState} keytostorage={'user'} data={value}>save</CustomButton>
+            <CustomButton onLocalStorageRestore={userRestoreState} keytostorage={'user'}>restore</CustomButton>
         </div>
     )
 }
