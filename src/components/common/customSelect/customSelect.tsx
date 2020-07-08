@@ -1,8 +1,18 @@
 import React, {ChangeEvent} from "react";
-import {DataType, ReducerActionType, setValueText} from "../../junior/junior";
 
 import s from './customSelect.module.sass';
 
+export const FIRST = "FIRST";
+export type DataType = {
+    defaultSelectText: string,
+    value: string,
+    list: Array<DataItemType>,
+}
+export type setValueTextACType = {
+    type: typeof FIRST,
+    text: string,
+}
+export type ReducerActionType = setValueTextACType;
 export type DataItemType = {
     value: string,
     key: string,
@@ -11,11 +21,12 @@ export type DataItemType = {
 type CustomSelectType = {
     data: DataType,
     onChange: (action: ReducerActionType) => void,
+    setValueTextAC: (text: string) => setValueTextACType,
 }
 
-export const CustomSelect: React.FC<CustomSelectType> = ({data, onChange}) => {
+export const CustomSelect: React.FC<CustomSelectType> = ({data, onChange, setValueTextAC}) => {
     const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        onChange(setValueText(e.currentTarget.value));
+        onChange(setValueTextAC(e.currentTarget.value));
     }
 
     return (
