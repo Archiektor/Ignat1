@@ -1,0 +1,31 @@
+@import "src/sass/variables"
+
+.wrapper
+  background-color: wheat
+  @include flexDirection(row)
+  padding: 10px
+  @include makeWH(330px, 30px)
+  justify-content: space-around
+  align-items: center
+
+  label
+    font-size: 1.2rem
+    text-shadow: 1px 1px 9px #9c8a69
+    font-weight: 700
+    font-family: "Consolas", sans-serif
+
+  select
+    @include makeWH(170px, 30px)
+    border-radius: 5px
+    background-color: #f1f0d3
+    cursor: help
+
+.listItem
+  font-size: 1.1rem
+  font-weight: 400
+  cursor: pointer
+
+  &_hidden
+    display: none
+
+
