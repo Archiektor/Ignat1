@@ -1,15 +1,15 @@
-import React, {useReducer, useState} from "react";
-import CustomSpan from "../common/customSpan/customSpan";
-import {restoreState, saveState} from "../../assets/localStorage/localStorage"
+import React, {useReducer, useState} from 'react';
+import CustomSpan from '../common/customSpan/customSpan';
+import {restoreState, saveState} from '../../assets/localStorage/localStorage'
 import sass from './junior.module.sass';
-import CustomButton from "../common/customButton/customButton";
+import CustomButton from '../common/customButton/customButton';
 import {
     CustomSelect,
     DataType,
     FIRST,
     ReducerActionType,
     setValueTextACType
-} from "../common/customSelect/customSelect";
+} from '../common/customSelect/customSelect';
 import {
     CustomRadio,
     RadioDataType,
@@ -18,8 +18,9 @@ import {
     setCheckedACType,
     UNCHECK_ALL,
     uncheckAllACType
-} from "../common/customRadio/customRadio";
-import {initialState, initialState2} from "../common/juniorStore/juniorStore";
+} from '../common/customRadio/customRadio';
+import {initialState, initialState2, initialState3} from '../common/juniorStore/juniorStore';
+import {hwReducer, sortArrayAC} from '../hwreducer/hwreducer';
 
 const setValueTextAC = (text: string): setValueTextACType => {
     return {
@@ -71,16 +72,17 @@ const Junior = () => {
         }
     }
 
-    const [value, setValue] = useState<string>("why so serious?");
+    const [value, setValue] = useState<string>('why so serious?');
     const [state, dispatch] = useReducer(reducer, initialState);
     const [state2, dispatch2] = useReducer(reducer2, initialState2);
+    const [state3, dispatch3] = useReducer(hwReducer, initialState3);
 
     const getInputValue = (str: string) => {
         setValue(str);
     }
 
     const randomFunctionDoingSmthWhenEnterPressed = () => {
-        console.log("Enter hitted");
+        console.log('Enter hitted');
     }
 
     const userSaveState = (key: string, str: string) => {
@@ -88,7 +90,15 @@ const Junior = () => {
     }
 
     const userRestoreState = (key: string) => {
-        restoreState(key, "default")
+        restoreState(key, 'default')
+    }
+
+    const SortUp = () => {
+        dispatch3(sortArrayAC('UP'))
+    }
+
+    const SortDown = () => {
+        dispatch3(sortArrayAC('DOWN'))
     }
 
 
@@ -109,6 +119,11 @@ const Junior = () => {
                 <h2>Custom Radio Usage</h2>
                 <CustomRadio data={state2} onChange={dispatch2} setCheckedAC={setCheckedAC}
                              uncheckAllAC={uncheckAllAC}/>
+            </div>
+            <div className={sass.wrapper}>
+                {state3.map(p => <div>{`${p.name} // ${p.age}`}</div>)}
+                <CustomButton onClick={SortUp}>Sort Up</CustomButton>
+                <CustomButton onClick={SortDown}>Sort Down</CustomButton>
             </div>
         </React.Fragment>
     )

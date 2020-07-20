@@ -1,6 +1,7 @@
 import {v1} from "uuid";
 import {RadioDataType} from "../customRadio/customRadio";
 import {DataType} from "../customSelect/customSelect";
+import {PartOfStateType} from '../../hwreducer/hwreducer';
 
 export const initialState: DataType = {
     defaultSelectText: "please select an option",
@@ -23,3 +24,10 @@ export const initialState2: RadioDataType = {
         {value: "option 4", key: v1(), checked: false},
     ]
 }
+
+export const initialState3: PartOfStateType = [
+    {id: v1(), name: 'Nikki', age: 28},
+    {id: v1(), name: 'Anna', age: 25},
+    {id: v1(), name: 'Ignat', age: 22},
+    {id: v1(), name: 'Saitama', age: 19},
+]
