@@ -1,0 +1,33 @@
+@import "src/sass/variables";
+
+.timeBlock {
+  @include flexDirection(column);
+  background-color: #b0d075;
+  @include makeWH(400px, 400px);
+  align-items: center;
+  justify-content: flex-start;
+  font: 700 1.3rem/1.6 "Century Gothic";
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  &__time {
+    color: #6f34b4;
+    font: 500 1.4rem/1.6 "Arkhip";
+    &_text {
+      margin-left: -15px;
+    }
+  }
+
+  &__date {
+    display: none;
+    &_hover {
+      display: block;
+    }
+  }
+  &__dateText {
+    color: #6f34b4;
+    font: 500 1.4rem/1.6 "Arkhip";
+  }
+}
+

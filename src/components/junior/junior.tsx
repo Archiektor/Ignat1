@@ -21,6 +21,7 @@ import {
 } from '../common/customRadio/customRadio';
 import {initialState, initialState2, initialState3} from '../common/juniorStore/juniorStore';
 import {hwReducer, sortArrayAC} from '../hwreducer/hwreducer';
+import Time from '../time/Time';
 
 const setValueTextAC = (text: string): setValueTextACType => {
     return {
@@ -121,9 +122,12 @@ const Junior = () => {
                              uncheckAllAC={uncheckAllAC}/>
             </div>
             <div className={sass.wrapper}>
-                {state3.map(p => <div>{`${p.name} // ${p.age}`}</div>)}
+                {state3.map(p => <div key={p.id}>{`${p.name} // ${p.age}`}</div>)}
                 <CustomButton onClick={SortUp}>Sort Up</CustomButton>
                 <CustomButton onClick={SortDown}>Sort Down</CustomButton>
+            </div>
+            <div className={sass.wrapper}>
+                <Time/>
             </div>
         </React.Fragment>
     )
