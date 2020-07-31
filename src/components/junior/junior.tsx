@@ -22,6 +22,10 @@ import {
 import {initialState, initialState2, initialState3} from '../common/juniorStore/juniorStore';
 import {hwReducer, sortArrayAC} from '../hwreducer/hwreducer';
 import Time from '../time/Time';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRootStateType} from '../../redux/redux-store';
+import {setLoadingAC} from '../../redux/junior-reducer';
+import {Preloader} from '../common/customPreloader/preloader';
 
 const setValueTextAC = (text: string): setValueTextACType => {
     return {
@@ -102,34 +106,51 @@ const Junior = () => {
         dispatch3(sortArrayAC('DOWN'))
     }
 
+    const loading = useSelector<AppRootStateType, boolean>(state => state.junior.loading);
+    const dispatchFromHook = useDispatch();
+
+    const tooglePreloader = async () => {
+        dispatchFromHook(setLoadingAC(true));
+        await setTimeout(() => {
+            dispatchFromHook(setLoadingAC(false));
+        }, 3000);
+    }
+
 
     return (
-        <React.Fragment>
-            <div className={sass.wrapper}>
-                <h2>Editable Span Usage</h2>
-                <CustomSpan title={value} getInputValue={getInputValue}
-                            randomFunctionDoingSmthWhenEnterPressed={randomFunctionDoingSmthWhenEnterPressed}>{value}</CustomSpan>
-                <CustomButton onLocalStorageSave={userSaveState} keytostorage={'user'} data={value}>save</CustomButton>
-                <CustomButton onLocalStorageRestore={userRestoreState} keytostorage={'user'}>restore</CustomButton>
-            </div>
-            <div className={sass.wrapper}>
-                <h2>Custom Select Usage</h2>
-                <CustomSelect data={state} onChange={dispatch} setValueTextAC={setValueTextAC}/>
-            </div>
-            <div className={sass.wrapper}>
-                <h2>Custom Radio Usage</h2>
-                <CustomRadio data={state2} onChange={dispatch2} setCheckedAC={setCheckedAC}
-                             uncheckAllAC={uncheckAllAC}/>
-            </div>
-            <div className={sass.wrapper}>
-                {state3.map(p => <div key={p.id}>{`${p.name} // ${p.age}`}</div>)}
-                <CustomButton onClick={SortUp}>Sort Up</CustomButton>
-                <CustomButton onClick={SortDown}>Sort Down</CustomButton>
-            </div>
-            <div className={sass.wrapper}>
-                <Time/>
-            </div>
-        </React.Fragment>
+        <div>
+            {loading && <Preloader/>}
+            {!loading && <React.Fragment>
+                <div className={sass.wrapper}>
+                    <CustomButton onClick={tooglePreloader}>preloader</CustomButton>
+                </div>
+                <div className={sass.wrapper}>
+                    <h2>Editable Span Usage</h2>
+                    <CustomSpan title={value} getInputValue={getInputValue}
+                                randomFunctionDoingSmthWhenEnterPressed={randomFunctionDoingSmthWhenEnterPressed}>{value}</CustomSpan>
+                    <CustomButton onLocalStorageSave={userSaveState} keytostorage={'user'}
+                                  data={value}>save</CustomButton>
+                    <CustomButton onLocalStorageRestore={userRestoreState} keytostorage={'user'}>restore</CustomButton>
+                </div>
+                <div className={sass.wrapper}>
+                    <h2>Custom Select Usage</h2>
+                    <CustomSelect data={state} onChange={dispatch} setValueTextAC={setValueTextAC}/>
+                </div>
+                <div className={sass.wrapper}>
+                    <h2>Custom Radio Usage</h2>
+                    <CustomRadio data={state2} onChange={dispatch2} setCheckedAC={setCheckedAC}
+                                 uncheckAllAC={uncheckAllAC}/>
+                </div>
+                <div className={sass.wrapper}>
+                    {state3.map(p => <div key={p.id}>{`${p.name} // ${p.age}`}</div>)}
+                    <CustomButton onClick={SortUp}>Sort Up</CustomButton>
+                    <CustomButton onClick={SortDown}>Sort Down</CustomButton>
+                </div>
+                <div className={sass.wrapper}>
+                    <Time/>
+                </div>
+            </React.Fragment>}
+        </div>
     )
 }
 

@@ -1,6 +1,12 @@
 $whitecolor: #ffffff;
 $yellowcolor: #7d8028;
 $darkredcolor: #7f2121;
+$violetcolor: #3e136a;
+//background: bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment initial|inherit;
+$mainFont: "Century Gothic";
+$additionalFont1: "Bahnschrift";
+
+
 $font-weights: (
         "thin" : 300,
         "regular": 400,
@@ -10,7 +16,7 @@ $font-weights: (
 );
 
 
-@mixin makeWH($width, $height){
+@mixin makeWH($width, $height) {
   width: $width;
   height: $height;
 }
@@ -35,42 +41,23 @@ $font-weights: (
   height: $height;
 }
 
-@mixin font($font-weight: normal, $font-size: normal, $line-height: normal, $letter-spacing: normal) {
-  //font-size: $font-size * 1px;
-  font-size: $font-size * 0.1rem;
-
-  @if $font-weight==normal {
-    font-weight: 500;
-  } @else {
-    font-weight: 800;
-  }
-
-  @if $line-height==normal {
-    line-height: normal;
-  } @else {
-    line-height: $line-height / $font-size;
-  }
-
-  @if $letter-spacing==normal {
-    letter-spacing: normal;
-  } @else {
-    letter-spacing: #{$letter-spacing / $font-size}em;
-  }
-}
-
 @mixin coverBackground {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-$mobile: 320;
-$tablet: 768;
-$large: 1024;
-$desktop: 1280;
+$mobile: 320px;
+$mobileM: 375px;
+$mobileL: 425px;
+$tablet: 768px;
+$tabletXL: 920px;
+$large: 1024px;
+$smallNote: 1200px;
+$desktop: 1280px;
 
-@mixin mobile {
-  @media only screen and (min-width: $mobile * 1px) {
+@mixin mediaQuery($resolution) {
+  @media only screen and (max-width: $resolution) {
     @content;
   }
 }
