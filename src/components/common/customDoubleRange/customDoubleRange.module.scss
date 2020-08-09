@@ -1,0 +1,151 @@
+@import "src/sass/variables";
+@import "src/sass/extensions";
+
+:root {
+  --low: null;
+  --high: null;
+}
+
+.data {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-size: .8rem;
+  font-weight: 800;
+  padding-bottom: 2px;
+}
+
+.double {
+  //border: 2px greenyellow solid;
+  width: 80%;
+  position: relative;
+}
+
+input[type=range] {
+  width: 100%;
+  margin: 15px 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  position: relative;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  cursor: default;
+  outline: 0;
+  -webkit-appearance: none;
+  height: 12px;
+  width: 100%;
+  background-color: #cad256;
+}
+
+input[type=range]::-moz-range-track {
+  cursor: default;
+  outline: 0;
+  -moz-appearance: none;
+  height: 12px;
+  width: 100%;
+  background-color: #cad256;
+  /*  position: relative;
+    top: 25px;*/
+}
+
+input[type=range]::-webkit-slider-thumb {
+  position: relative;
+  z-index: 999 !important;
+  -webkit-appearance: none; // Reset appearance so we can apply backgrounds/borders etc.
+  pointer-events: auto; // Re-enable pointer events so the handles can be used.
+  border: 2px solid #000000;
+  height: 24px;
+  width: 10px;
+  border-radius: 3px;
+  background: #7dce4a;
+  cursor: pointer;
+  margin-top: -6px;
+}
+
+input[type=range]::-moz-range-thumb {
+  position: absolute;
+  z-index: 999 !important;
+  -moz-appearance: none; // Reset appearance so we can apply backgrounds/borders etc.
+  pointer-events: auto; // Re-enable pointer events so the handles can be used.
+  border: 2px solid #000000;
+  height: 24px;
+  width: 10px;
+  border-radius: 3px;
+  background: #7dce4a;
+  cursor: pointer;
+  margin-top: -6px;
+}
+
+//TODO doesn't work at all
+input[type=range]::-webkit-progress-value {
+  //-webkit-appearance: none;
+  position: absolute;
+  z-index: 222;
+  height: 12px;
+  width: 80%;
+  left: 0;
+  top: 0;
+  --track-background: linear-gradient(to right, transparent var(--low), var(--range-color) 0, var(--range-color) var(--high), transparent 0) no-repeat 0 100% / 100% 100%;
+  --range-color: #36115f;
+  background: var(--track-background);
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #dcab31;
+  z-index: 5;
+}
+
+//TODO work uncorrect
+input[type=range]::-moz-range-progress {
+  position: absolute;
+  z-index: 222;
+  //background-color: darkred;
+  height: 12px;
+  -moz-appearance: none;
+  width: 80%;
+  left: 0;
+  top: 0;
+  --track-background: linear-gradient(to right, transparent var(--low), var(--range-color) 0, var(--range-color) var(--high), transparent 0) no-repeat 0 100% / 100% 100%;
+  --range-color: #36115f;
+  background: var(--track-background);
+}
+
+.slider {
+  /*  position: relative;
+    z-index: -1;
+    background: transparent;*/
+  top: -30px;
+  left: 0;
+  right: 0;
+
+  //TODO position for moz uncorrect
+  /*
+    &::-moz-range-track {
+      top: -25px;
+    }*/
+
+  &__values {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    div {
+      width: 50px;
+      text-align: center;
+      border: 3px solid;
+      box-shadow: 2px 2px 7px black;
+    }
+  }
+}
+
+

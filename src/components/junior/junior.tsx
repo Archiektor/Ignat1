@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from 'react';
+import React, {useCallback, useReducer, useState} from 'react';
 import CustomSpan from '../common/customSpan/customSpan';
 import {restoreState, saveState} from '../../assets/localStorage/localStorage'
 import sass from './junior.module.sass';
@@ -26,6 +26,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../../redux/redux-store';
 import {setLoadingAC} from '../../redux/junior-reducer';
 import {Preloader} from '../common/customPreloader/preloader';
+import CustomRange from '../common/customRange/customRange';
+import {setSecondValueAC, setValueAC} from '../../redux/range-reducer';
+import CustomDoubleRange from '../common/customDoubleRange/customDoubleRange';
 
 const setValueTextAC = (text: string): setValueTextACType => {
     return {
@@ -116,6 +119,16 @@ const Junior = () => {
         }, 3000);
     }
 
+    const dispatchHook = useDispatch();
+
+    const onRangeChange = useCallback((num: number) => {
+        dispatchHook(setValueAC(num));
+    }, [dispatchHook])
+
+    const onSecondRangeChange = useCallback((num: number) => {
+        dispatchHook(setSecondValueAC(num));
+    }, [dispatchHook])
+
 
     return (
         <div>
@@ -124,6 +137,15 @@ const Junior = () => {
                 <div className={sass.wrapper}>
                     <CustomButton onClick={tooglePreloader}>preloader</CustomButton>
                 </div>
+                <div className={sass.wrapper}>
+                    <h4>CustomRange</h4>
+                    <CustomRange onChange={onRangeChange}/>
+                </div>
+                <div className={sass.wrapper}>
+                    <h4>Custom DoubleRange</h4>
+                    <CustomDoubleRange onChange={onRangeChange} onSecondChange={onSecondRangeChange}/>
+                </div>
+
                 <div className={sass.wrapper}>
                     <h2>Editable Span Usage</h2>
                     <CustomSpan title={value} getInputValue={getInputValue}
