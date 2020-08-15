@@ -1,0 +1,32 @@
+@import "src/sass/variables";
+
+.wrapper {
+  padding: 10px;
+  @include makeWH(120px, 25px);
+}
+
+
+select {
+  position: absolute;
+  top: 5px;
+  right: -130px;
+  @include makeWH(120px, 25px);
+  border-radius: 5px;
+  cursor: help;
+  background-color: #e5dfdf;
+  color: #20300b;
+}
+
+
+.listItem {
+  font-size: 1.1rem;
+  font-weight: 400;
+  cursor: pointer;
+
+  &_hidden {
+    display: none;
+  }
+}
+
+
+

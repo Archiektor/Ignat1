@@ -1,18 +1,14 @@
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent} from 'react';
 
-import s from './customSelect.module.sass';
+import s from './customSelect.module.scss';
+import {ListItemOptionType} from '../../../redux/juniorAdvanced-reducer';
 
-export const FIRST = "FIRST";
+export const FIRST = 'FIRST';
 export type DataType = {
-    defaultSelectText: string,
+    listOfOptions: Array<DataItemType> | Array<ListItemOptionType>,
     value: string,
-    list: Array<DataItemType>,
 }
-export type setValueTextACType = {
-    type: typeof FIRST,
-    text: string,
-}
-export type ReducerActionType = setValueTextACType;
+
 export type DataItemType = {
     value: string,
     key: string,
@@ -20,26 +16,22 @@ export type DataItemType = {
 
 type CustomSelectType = {
     data: DataType,
-    onChange: (action: ReducerActionType) => void,
-    setValueTextAC: (text: string) => setValueTextACType,
+    onChange: (theme: string) => void,
 }
 
-export const CustomSelect: React.FC<CustomSelectType> = ({data, onChange, setValueTextAC}) => {
+export const CustomSelect: React.FC<CustomSelectType> = React.memo(({data, onChange}) => {
     const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        onChange(setValueTextAC(e.currentTarget.value));
+        onChange(e.currentTarget.value);
     }
 
     return (
         <div className={s.wrapper}>
-            <label htmlFor="cars">Choose a car: </label>
-
-            <select name="cars"
-                    value={data.value ? data.value : data.defaultSelectText}
+            <select name="themes"
+                    value={data.value}
                     onChange={onChangeHandler}>
                 {
-                    data.list.map(listItem => {
-                        const res = listItem.value === data.defaultSelectText
-                        return <option className={res ? `${s.listItem} ${s.listItem_hidden}` : `${s.listItem}`}
+                    data.listOfOptions.map((listItem, idx) => {
+                        return <option className={idx === 0 ? `${s.listItem} ${s.listItem_hidden}` : `${s.listItem}`}
                                        key={listItem.key}
                                        value={`${listItem.value}`}>{listItem.value}</option>
                     })
@@ -47,5 +39,5 @@ export const CustomSelect: React.FC<CustomSelectType> = ({data, onChange, setVal
             </select>
         </div>
     )
-}
+})
 

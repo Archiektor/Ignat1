@@ -4,13 +4,6 @@ import {restoreState, saveState} from '../../assets/localStorage/localStorage'
 import sass from './junior.module.sass';
 import CustomButton from '../common/customButton/customButton';
 import {
-    CustomSelect,
-    DataType,
-    FIRST,
-    ReducerActionType,
-    setValueTextACType
-} from '../common/customSelect/customSelect';
-import {
     CustomRadio,
     RadioDataType,
     Reducer2ActionType,
@@ -19,7 +12,7 @@ import {
     UNCHECK_ALL,
     uncheckAllACType
 } from '../common/customRadio/customRadio';
-import {initialState, initialState2, initialState3} from '../common/juniorStore/juniorStore';
+import {initialState2, initialState3} from '../common/juniorStore/juniorStore';
 import {hwReducer, sortArrayAC} from '../hwreducer/hwreducer';
 import Time from '../time/Time';
 import {useDispatch, useSelector} from 'react-redux';
@@ -30,12 +23,12 @@ import CustomRange from '../common/customRange/customRange';
 import {setSecondValueAC, setValueAC} from '../../redux/range-reducer';
 import CustomDoubleRange from '../common/customDoubleRange/customDoubleRange';
 
-const setValueTextAC = (text: string): setValueTextACType => {
+/*const setValueTextAC = (text: string): setValueTextACType => {
     return {
         type: FIRST,
         text: text,
     }
-}
+}*/
 const setCheckedAC = (key: string, checked: boolean): setCheckedACType => {
     return {
         type: SET_CHECKED,
@@ -50,14 +43,14 @@ const uncheckAllAC = (): uncheckAllACType => {
 }
 
 const Junior = () => {
-    const reducer = (state: DataType, action: ReducerActionType): DataType => {
+/*    const reducer = (state: DataType, action: ReducerActionType): DataType => {
         switch (action.type) {
             case FIRST:
                 return {...state, value: action.text};
             default:
                 throw new Error();
         }
-    }
+    }*/
     const reducer2 = (state: RadioDataType, action: Reducer2ActionType): RadioDataType => {
         switch (action.type) {
             case SET_CHECKED: {
@@ -81,7 +74,7 @@ const Junior = () => {
     }
 
     const [value, setValue] = useState<string>('why so serious?');
-    const [state, dispatch] = useReducer(reducer, initialState);
+    //const [state, dispatch] = useReducer(reducer, initialState);
     const [state2, dispatch2] = useReducer(reducer2, initialState2);
     const [state3, dispatch3] = useReducer(hwReducer, initialState3);
 
@@ -156,7 +149,9 @@ const Junior = () => {
                 </div>
                 <div className={sass.wrapper}>
                     <h2>Custom Select Usage</h2>
+{/*
                     <CustomSelect data={state} onChange={dispatch} setValueTextAC={setValueTextAC}/>
+*/}
                 </div>
                 <div className={sass.wrapper}>
                     <h2>Custom Radio Usage</h2>
