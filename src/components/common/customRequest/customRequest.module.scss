@@ -1,0 +1,31 @@
+@import "../../../sass/variables";
+@import "../../../sass/extensions";
+
+.wrapper {
+  @include flexDirection(column);
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #c4e3bc;
+  @include makeWH(400px, 150px);
+  box-sizing: border-box;
+
+  &__textBlock {
+    border: 2px dashed #010118;
+    width: 70%;
+    height: 50px;
+    text-align: left;
+    font-size: 1.2rem;
+    padding: 5px;
+  }
+
+  &__btnBlock {
+    @include flexDirection(row);
+  }
+
+  &__checkBlock {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
