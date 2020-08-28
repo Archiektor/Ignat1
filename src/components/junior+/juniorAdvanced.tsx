@@ -14,38 +14,21 @@ const JuniorAdvanced = React.memo(() => {
         value: value,
         listOfOptions: list,
     }
-    let wrapperStyle;
     const dispatch = useDispatch();
 
     const changeTheme = useCallback((theme: string) => {
         dispatch(setThemeAC(theme));
     }, [dispatch]);
 
-    switch (value) {
-        case 'white': {
-            wrapperStyle = `${s.wrapper} ${s.wrapper_white}`;
-            break;
-        }
-        case 'dark': {
-            wrapperStyle = `${s.wrapper} ${s.wrapper_dark}`;
-            break;
-        }
-        case 'green': {
-            wrapperStyle = `${s.wrapper} ${s.wrapper_green}`;
-            break;
-        }
-        default:
-            wrapperStyle = `${s.wrapper} ${s.wrapper_white}`;
-    }
 
     return (
-       <div className={wrapperStyle}>
-           <div className={s.container}>
-               <h2>Junior Advanced</h2>
-               <CustomSelect data={data} onChange={changeTheme}/>
-               <CustomRequest/>
-           </div>
-       </div>
+        <div className={`${s.wrapper} ${s['wrapper_' + value]}`}>
+            <div className={s.container}>
+                <h2>Junior Advanced</h2>
+                <CustomSelect data={data} onChange={changeTheme}/>
+                <CustomRequest/>
+            </div>
+        </div>
     )
 })
 

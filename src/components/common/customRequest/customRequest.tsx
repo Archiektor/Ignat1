@@ -15,8 +15,15 @@ const CustomRequest: React.FC = React.memo(() => {
 
     const pushRequest = useCallback(() => {
         requestApi.addPost(isChecked)
-            .then(res => setState(res.info))
-            .catch(err => alert(err));
+            .then(data => {
+                //console.log(data)
+                setState(data.info);
+            })
+            .catch(err => {
+                console.log(err);
+                //console.log(err.request.data.info); err.request >> undefined
+                alert(err);
+            });
         setTimeout(() => setState('default text'), 5000);
     }, [isChecked])
 
